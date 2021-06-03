@@ -1,4 +1,5 @@
 <mvc:View
+controllerName="org.ubb.books.controller.Books"
    xmlns:mvc="sap.ui.core.mvc"
 	xmlns:core="sap.ui.core"
 	xmlns="sap.m">
@@ -11,8 +12,20 @@
 			}
 		}"
 		growing="true"
-		growingThreshold="10">
-	
+		growingThreshold="10"
+		mode="SingleSelectLeft"
+		selectionChange="onSelect">
+
+		<headerToolbar>
+				<Toolbar>
+					<content>
+						<Button text="Create" press="create" />
+						<Button text="Update" press="update" />
+						<Button text="Delete" press="delete" />
+					</content>
+				</Toolbar>
+			</headerToolbar>
+		
 		<columns>
 			<Column>
 				<Text text="Title" />
@@ -26,8 +39,23 @@
 			<Column>
 				<Text text="Language" />
 			</Column>
-         <Column>
+         	<Column>
 				<Text text="Available books" />
+			</Column>
+			<Column>
+				<Text text="Total number of books" />
+			</Column>
+			<Column>
+				<Text text="Created on" />
+			</Column>
+			<Column>
+				<Text text="Created by" />
+			</Column>
+						<Column>
+				<Text text="Changed on" />
+			</Column>
+			<Column>
+				<Text text="Changed by" />
 			</Column>
 		</columns>
 		<items>
@@ -35,18 +63,31 @@
 				<cells>
 					<ObjectIdentifier
 						title="{Title}"
-						text="{ISBN}"/>
+						text="{Isbn}"/>
 					<Text text="{Author}" />
 					<Text text="{ 
-							path: 'DatePublished',
+							path: 'PublishDate',
 							type: 'sap.ui.model.type.Date'
                			}" 
 					/>
 					<Text text="{Language}" />
-					<Text text="{= parseInt(${NubmerAvailableBooks}) }" />
+					<Text text="{= parseInt(${NrbooksAvailable}) }" />
+					<Text text="{= parseInt(${TotalNrBooks}) }" />
+					<Text text="{CreatedOn}" />
+					<Text text="{CreatedBy}" />
+					<Text text="{ChangedOn}" />
+					<Text text="{ChangedBy}" />
 				</cells>
 			</ColumnListItem>
 		</items>
 	</Table>
+
+	<Input id="isbn" description="Isbn" valueLiveUpdate="true" width="50%" />
+			<Input id="author" description="Author" valueLiveUpdate="true" width="50%" />
+			<Input id="title" description="Title" valueLiveUpdate="true" width="50%" />
+			<DatePicker id="datepublished" placeholder="Publish date" valueLiveUpdate="true" width="50%" valueFormat="yyyy-MM-ddTHH:mm:ss" />
+			<Input id="language" description="Language" valueLiveUpdate="true" width="50%" />
+			<Input id="available" description="Available" valueLiveUpdate="true" type="Number" width="50%" />
+			<Input id="total" description="Total" valueLiveUpdate="true" type="Number" width="50%" />
    
 </mvc:View>

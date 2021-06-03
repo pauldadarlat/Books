@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+
+<core:FragmentDefinition xmlns:ui="sap.ui" xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout" xmlns:c="sap.ui.core" xmlns:core="sap.ui.core" xmlns="sap.m">
+
+
+<Dialog>
+
+
+<f:SimpleForm title="{i18n>newBook}" class="editableForm" columnsM="1" columnsL="1" emptySpanM="0" emptySpanL="0" labelSpanM="2" labelSpanL="2" layout="ResponsiveGridLayout" editable="true" maxContainerCols="2" id="idInsertNewBookForm">
+
+
+<f:content>
+
+<core:Title text="Create new book"/>
+
+<Label text="isbn"/>
+
+<Input placeholder="isbn" value="{/Isbn}"/>
+
+<Label text="title"/>
+
+<Input placeholder="title" value="{/Title}"/>
+
+<Label text="author"/>
+
+<Input placeholder="author" value="{/Author}"/>
+
+<Label text="publishedOn"/>
+
+<DatePicker value="Datepublished" valueFormat="yyyy-MM-ddTHH:mm:ss"/>
+
+<Label text="language"/>
+
+<Input placeholder="language" value="{/Language}"/>
+
+<Label text="Total"/>
+
+<Input placeholder="Total" value="{path:'/Totalnrbooks', type:'sap.ui.model.odata.type.Int16'}"/>
+
+<Label text="Available"/>
+
+<Input placeholder="Available" value="{path:'/Nravailable', type:'sap.ui.model.odata.type.Int16'}"/>
+
+<Button text="Save" press="saveBook" type="Accept"/>
+
+<Button text="Cancel" press="closeDialog" type="Reject"/>
+
+</f:content>
+
+</f:SimpleForm>
+
+</Dialog>
+
+</core:FragmentDefinition>
